@@ -1,0 +1,31 @@
+name: CI
+
+on: 
+  push:
+    branches-ignore:
+      - master
+    tags-ignore:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - uses: aws-actions/setup-sam@v1
+    
+    - name: Configure Node
+      uses: actions/setup-node@v2
+      with:
+        cache: "yarn"
+        node-version: '14'
+
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Build
+      run:  yarn build
