@@ -23,9 +23,9 @@ interface Props extends OptionalProps {
   lightboxWillOpen?: (index?: number) => void;
   lightboxWillClose?: () => void;
   tagStyle?: React.CSSProperties;
-  tileViewportStyle: () => React.CSSProperties;
+  tileViewportStyle?: () => React.CSSProperties;
   thumbnailStyle?: () => React.CSSProperties;
-  thumbnailImageComponent: ElementType;
+  thumbnailImageComponent?: ElementType;
 }
 
 interface RequiredLightboxOptions {
