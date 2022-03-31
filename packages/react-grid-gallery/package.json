@@ -1,6 +1,6 @@
 {
   "name": "@codification/react-grid-gallery",
-  "version": "0.0.0",
+  "version": "0.0.16",
   "description": "A typed React grid gallery.",
   "repository": {
     "type": "git",
