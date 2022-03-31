@@ -8,7 +8,6 @@ interface Props {
   item: CalculatedImage;
   index: number;
   margin: number;
-  height: number;
   isSelectable: boolean;
   onClick?: ClickHandler;
   onSelectImage: ClickHandler;
@@ -27,42 +26,14 @@ const thumbnailStyle = ({ thumbnailStyle, item, ...props }: Props): CSSPropertie
   if (thumbnailStyle) {
     return thumbnailStyle();
   }
-  if (item.isSelected) {
-    const ratio = (item.scaletwidth / props.height);
-    let height = 0;
-    let width = 0;
-    const viewportHeight = (props.height - 32);
-    const viewportWidth = (item.vwidth - 32);
-
-    if (item.scaletwidth > props.height) {
-      width = item.scaletwidth - 32;
-      height = Math.floor(width / ratio);
-    }
-    else {
-      height = props.height - 32;
-      width = Math.floor(height * ratio);
-    }
-
-    const marginTop = -Math.abs(Math.floor((viewportHeight - height) / 2));
-    const marginLeft = -Math.abs(Math.floor((viewportWidth - width) / 2));
-    return {
-      cursor: 'pointer',
-      width: width,
-      height: height,
-      marginLeft: marginLeft,
-      marginTop: marginTop
-    };
-  }
   return {
     cursor: 'pointer',
-    width: item.scaletwidth,
-    height: props.height,
-    marginLeft: item.marginLeft,
-    marginTop: 0
+    width: item.scaledWidth,
+    height: item.scaledHeight,
   };
 }
 
-const tileViewportStyle = ({ tileViewportStyle, item, height }: Props): CSSProperties => {
+const tileViewportStyle = ({ tileViewportStyle, item }: Props): CSSProperties => {
   if (tileViewportStyle)
     return tileViewportStyle();
   let nanoBase64Backgorund = {}
@@ -75,14 +46,14 @@ const tileViewportStyle = ({ tileViewportStyle, item, height }: Props): CSSPrope
   }
   if (item.isSelected)
     return Object.assign({
-      width: item.vwidth - 32,
-      height: height - 32,
+      width: item.scaledWidth - 32,
+      height: item.scaledHeight - 32,
       margin: 16,
       overflow: "hidden",
     }, nanoBase64Backgorund);
   return Object.assign({
-    width: item.vwidth,
-    height: height,
+    width: item.scaledWidth,
+    height: item.scaledHeight,
     overflow: "hidden",
   }, nanoBase64Backgorund);
 }
@@ -132,7 +103,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        margin: props.margin,
+        margin: (props.margin / 2),
         WebkitUserSelect: "none",
         position: "relative",
         float: "left",

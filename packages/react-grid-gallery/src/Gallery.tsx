@@ -1,3 +1,4 @@
+import JustifiedLayout from 'justified-layout';
 import React, { ElementType, useEffect, useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
@@ -153,91 +154,28 @@ export const Gallery: React.FC<Props> = (np: Props) => {
     return undefined;
   }
 
-  const calculateCutOff = (len: number, delta: number, items: CalculatedImage[]): number[] => {
-    const cutoff: number[] = [];
-    let cutsum = 0;
-    for (const i in items) {
-      const item = items[i];
-      const fractOfLen = item.scaletwidth / len;
-      cutoff[i] = Math.floor(fractOfLen * delta);
-      cutsum += cutoff[i];
-    }
-
-    let stillToCutOff = delta - cutsum;
-    while (stillToCutOff > 0) {
-      for (const i in cutoff) {
-        cutoff[i]++;
-        stillToCutOff--;
-        if (stillToCutOff < 0) break;
-      }
-    }
-    return cutoff;
-  }
-
-  const buildImageRow = (items: CalculatedImage[], containerWidth: number): CalculatedImage[] => {
-    const row: CalculatedImage[] = [];
-    let len = 0;
-    const imgMargin = 2 * props.margin;
-    while (items.length > 0 && len < containerWidth) {
-      const item = items.shift();
-      row.push(item!);
-      len += (item!.scaletwidth + imgMargin);
-    }
-
-    const delta = len - containerWidth;
-    if (row.length > 0 && delta > 0) {
-      const cutoff = calculateCutOff(len, delta, row);
-      for (const i in row) {
-        const pixelsToRemove = cutoff[i];
-        const item = row[i];
-        item.marginLeft = -Math.abs(Math.floor(pixelsToRemove / 2));
-        item.vwidth = item.scaletwidth - pixelsToRemove;
-      }
-    }
-    else {
-      for (const j in row) {
-        const item = row[j];
-        item.marginLeft = 0;
-        item.vwidth = item.scaletwidth;
-      }
-    }
-    return row;
-  }
-
-  const setThumbScale = (item: CalculatedImage): void => {
-    item.scaletwidth =
-      Math.floor(props.rowHeight
-        * (item.thumbnailWidth / item.thumbnailHeight));
-  }
-
   const renderThumbs = (containerWidth: number, images = state.images): CalculatedImage[] => {
     if (!images) return [];
     if (containerWidth == 0) return [];
 
     const items = images.slice() as CalculatedImage[];
-    for (const t of items) {
-      setThumbScale(t);
+    const ratios = items.map(item => item.thumbnailWidth / item.thumbnailHeight);
+    const layoutConfig = {
+      containerWidth,
+      boxSpacing: props.margin,
+      targetRowHeight: props.rowHeight,
+      maxNumRows: props.maxRows
     }
 
-    const thumbs: CalculatedImage[] = [];
-    const rows: CalculatedImage[][] = [];
-    while (items.length > 0) {
-      rows.push(buildImageRow(items, containerWidth));
-    }
+    const result = JustifiedLayout(ratios, layoutConfig);
 
-    for (const row of rows) {
-      for (const item of row) {
-        if (props.maxRows) {
-          if (row.length < props.maxRows) {
-            thumbs.push(item);
-          }
-        }
-        else {
-          thumbs.push(item);
-        }
-      }
-    }
-    return thumbs;
+    result.boxes.forEach((box, i) => {
+      const item = items[i];
+      item.scaledWidth = box.width;
+      item.scaledHeight = box.height;
+    });
+
+    return items;
   }
 
   const images = state.thumbnails.map((item, i) => {
@@ -246,7 +184,6 @@ export const Gallery: React.FC<Props> = (np: Props) => {
       item={item}
       index={i}
       margin={props.margin}
-      height={props.rowHeight}
       isSelectable={props.enableImageSelection}
       onClick={getOnClickThumbnailFn()}
       onSelectImage={onSelectImage}

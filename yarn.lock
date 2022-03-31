@@ -3571,6 +3571,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
+"@types/justified-layout@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@types/justified-layout/-/justified-layout-4.1.0.tgz#c581c249a80ece26ceb21c86742e3ffaa9605271"
+  integrity sha512-D8u3yfJjx1xjRJxWUVJlTmFxSN0ph5BpkQo9dTIO1LpYFu0WS1XcWJoNAKJZql+jyiZB5eHt0UKxC1wsmO3/LQ==
+
 "@types/mdast@^3.0.0":
   version "3.0.10"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.10.tgz#4724244a82a4598884cbbe9bcfd73dff927ee8af"
@@ -10220,6 +10225,11 @@ just-debounce@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/just-debounce/-/just-debounce-1.1.0.tgz#2f81a3ad4121a76bc7cb45dbf704c0d76a8e5ddf"
   integrity sha512-qpcRocdkUmf+UTNBYx5w6dexX5J31AKK1OmPwH630a83DdVVUIngk55RSAiIGpQyoH0dlr872VHfPjnQnK1qDQ==
+
+justified-layout@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/justified-layout/-/justified-layout-4.1.0.tgz#0584091b45e69f19ac97a54539f0a03eebe7bcfe"
+  integrity sha512-M5FimNMXgiOYerVRGsXZ2YK9YNCaTtwtYp7Hb2308U1Q9TXXHx5G0p08mcVR5O53qf8bWY4NJcPBxE6zuayXSg==
 
 keyv@^3.0.0:
   version "3.1.0"

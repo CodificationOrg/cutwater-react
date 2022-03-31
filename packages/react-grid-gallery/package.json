@@ -32,10 +32,12 @@
     ]
   },
   "dependencies": {
+    "justified-layout": "4.1.0",
     "react-image-lightbox": "5.1.4",
     "resize-observer-hook": "1.0.5"
   },
   "devDependencies": {
+    "@types/justified-layout": "4.1.0",
     "react": "17.0.2",
     "style-loader": "2.0.0",
     "webpack": "4.46.0"
