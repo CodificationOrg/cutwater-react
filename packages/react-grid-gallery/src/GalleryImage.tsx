@@ -85,7 +85,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
     });
 
   const customOverlay = (typeof props.item.customOverlay === 'undefined')
-    ? <noscript /> : <GalleryImageOverlay hover={hover} overlay={props.customOverlay} />;
+    ? <noscript /> : <GalleryImageOverlay hover={hover} overlay={props.item.customOverlay} />;
 
   const thumbnailProps = {
     key: `img-${props.index}`,
