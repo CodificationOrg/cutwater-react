@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.3 (2022-04-03)
+
+
+### Bug Fixes
+
+* correct passing undefined for custom overlays ([bf4b4a8](https://github.com/CodificationOrg/cutwater-react/commit/bf4b4a816da625ccfc4522fb292cf4c002e2468e))
+
+
+
+
+
 ## 0.1.2 (2022-03-31)
 
 **Note:** Version bump only for package root
