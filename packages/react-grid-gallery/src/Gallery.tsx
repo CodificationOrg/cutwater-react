@@ -197,8 +197,6 @@ export const Gallery: React.FC<Props> = (np: Props) => {
   const prevImage = state.currentImage > 0 ? props.images[state.currentImage - 1] : undefined;
   const nextImage = state.currentImage < props.images.length - 1 ? props.images[state.currentImage + 1] : undefined
 
-  console.log('Lightbox: ', state.lightboxIsOpen);
-
   const lightbox = state.lightboxIsOpen ? (
     <Lightbox
       {...lbProps.lightBoxProps}
