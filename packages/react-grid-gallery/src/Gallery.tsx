@@ -82,7 +82,6 @@ export const Gallery: React.FC<Props> = (np: Props) => {
   }, [width]);
 
   const openLightbox = (index: number, event?: React.MouseEvent<HTMLElement>): void => {
-    console.log('Open lightbox called.');
     if (event) {
       event.preventDefault();
     }
