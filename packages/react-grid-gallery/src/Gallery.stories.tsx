@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import { Gallery } from './Gallery';
-import { Image } from './types';
+import { Image, ThumbnailDetails } from './types';
 
 const imageArray: Image[] = [
   {
@@ -51,14 +51,16 @@ const imageArray: Image[] = [
     thumbnail: "https://c4.staticflickr.com/9/8578/28357117603_97a8233cf5_n.jpg",
     thumbnailWidth: 320,
     thumbnailHeight: 213,
-    caption: "Ropeman - Thailand (Tom Eversley - isorepublic.com)"
+    caption: "Ropeman - Thailand (Tom Eversley - isorepublic.com)",
+    customOverlay: <div>Overlay Here</div>
   },
   {
     src: "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_b.jpg",
     thumbnail: "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_n.jpg",
     thumbnailWidth: 257,
     thumbnailHeight: 320,
-    caption: "A photo by 贝莉儿 NG. (unsplash.com)"
+    caption: "A photo by 贝莉儿 NG. (unsplash.com)",
+    customOverlay: (detail: ThumbnailDetails): ReactNode => <div>{detail.width}x{detail.height}</div>
   }
 ];
 

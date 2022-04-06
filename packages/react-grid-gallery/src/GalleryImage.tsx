@@ -72,6 +72,17 @@ const renderCheckButton = ({ index, item, isSelectable, onSelectImage }: Props, 
   );
 }
 
+const toCustomOverlay = ({ item }: Props): ReactNode | undefined => {
+  const { customOverlay } = item;
+  if (!customOverlay) {
+    return undefined;
+  }
+  if (typeof customOverlay === 'function') {
+    return customOverlay({ width: item.scaledWidth, height: item.scaledHeight });
+  }
+  return customOverlay;
+}
+
 export const GalleryImage: React.FC<Props> = (np: Props) => {
   const [hover, setHover] = useState<boolean>(false);
   const props: Props = { ...DEFAULT_PROPS, ...np };
@@ -84,8 +95,8 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
       return <GalleryImageTag key={`tag-${key}`} tag={tag} tagStyle={props.tagStyle} />;
     });
 
-  const customOverlay = (typeof props.item.customOverlay === 'undefined')
-    ? <noscript /> : <GalleryImageOverlay hover={hover} overlay={props.item.customOverlay} />;
+  const overlayNode = toCustomOverlay(props);
+  const customOverlay = !overlayNode ? <noscript /> : <GalleryImageOverlay hover={hover} overlay={overlayNode} />;
 
   const thumbnailProps = {
     key: `img-${props.index}`,

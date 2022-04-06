@@ -170,8 +170,8 @@ export const Gallery: React.FC<Props> = (np: Props) => {
 
     result.boxes.forEach((box, i) => {
       const item = items[i];
-      item.scaledWidth = box.width;
-      item.scaledHeight = box.height;
+      item.scaledWidth = Math.round(box.width);
+      item.scaledHeight = Math.round(box.height);
     });
 
     return items;
