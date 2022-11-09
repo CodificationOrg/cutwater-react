@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Configure Git User
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+
       - name: Configure Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           cache: "yarn"
           node-version: "14"
@@ -30,11 +31,13 @@ jobs:
       
       - name: Build
         run:  yarn build
+        env:
+          NX_BRANCH: ${{ github.ref_name }}
 
       - name: Release
         run: npx lerna version --conventional-commits --create-release github --yes
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NX_BRANCH: ${{ github.ref_name }}
 
       - name: Publish
         run:  npx lerna publish from-package --yes --no-verify-access
