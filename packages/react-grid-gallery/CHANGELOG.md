@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.6 (2022-11-09)
+
+
+### Bug Fixes
+
+* replace missing GH token ([a98619e](https://github.com/CodificationOrg/cutwater-react/commit/a98619eb363177bb9e749feea75c7f85e7091e79))
+
+
+
+
+
 ## 0.1.5 (2022-04-06)
 
 **Note:** Version bump only for package @codification/react-grid-gallery
