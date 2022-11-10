@@ -22,7 +22,7 @@ const DEFAULT_PROPS: Partial<Props> = {
   isSelectable: true
 }
 
-const thumbnailStyle = ({ thumbnailStyle, item, ...props }: Props): CSSProperties => {
+const thumbnailStyle = ({ thumbnailStyle, item }: Props): CSSProperties => {
   if (thumbnailStyle) {
     return thumbnailStyle();
   }
