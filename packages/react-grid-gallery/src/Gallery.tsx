@@ -51,20 +51,18 @@ const DEFUALT_PROPS: Required<OptionalProps> = {
 }
 
 interface GalleryState {
-  images: Image[];
   thumbnails: CalculatedImage[];
   lightboxIsOpen: boolean;
   currentImage: number;
   containerWidth: number;
 }
 
-export const Gallery: React.FC<Props> = (np: Props) => {
-  const props: Props & Required<OptionalProps> = { ...DEFUALT_PROPS, ...np };
+export const Gallery: React.FC<Props> = ({images, ...np}: Props) => {
+  const props: Omit<Props, 'images'> & Required<OptionalProps> = { ...DEFUALT_PROPS, ...np };
   const lbProps: (LightboxOptions & RequiredLightboxOptions) = { ...DEFAULT_LIGHTBOX_OPTIONS, ...np.lightboxOptions };
 
   const [ref, width] = useResizeObserver();
   const [state, setState] = useState<GalleryState>({
-    images: props.images,
     thumbnails: [],
     lightboxIsOpen: lbProps.isOpen,
     currentImage: lbProps.currentImage,
@@ -79,7 +77,7 @@ export const Gallery: React.FC<Props> = (np: Props) => {
         thumbnails: renderThumbs(width)
       }));
     }
-  }, [width]);
+  }, [width, images]);
 
   const openLightbox = (index: number, event?: React.MouseEvent<HTMLElement>): void => {
     if (event) {
@@ -142,18 +140,18 @@ export const Gallery: React.FC<Props> = (np: Props) => {
   const onSelectImage = (index: number, event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
     if (props.onSelectImage) {
-      props.onSelectImage.call(this, index, state.images[index]);
+      props.onSelectImage.call(this, index, images[index]);
     }
   }
 
   const renderImageTitle = (): string | undefined => {
     if (lbProps.showImageCount) {
-      return `${state.currentImage + 1} ${lbProps.imageCountSeparator} ${props.images.length}`;
+      return `${state.currentImage + 1} ${lbProps.imageCountSeparator} ${images.length}`;
     }
     return undefined;
   }
 
-  const renderThumbs = (containerWidth: number, images = state.images): CalculatedImage[] => {
+  const renderThumbs = (containerWidth: number): CalculatedImage[] => {
     if (!images) return [];
     if (containerWidth == 0) return [];
 
@@ -177,7 +175,7 @@ export const Gallery: React.FC<Props> = (np: Props) => {
     return items;
   }
 
-  const images = state.thumbnails.map((item, i) => {
+  const galleryImages = state.thumbnails.map((item, i) => {
     return <GalleryImage
       key={`Image-${i}-${item.src}`}
       item={item}
@@ -192,9 +190,9 @@ export const Gallery: React.FC<Props> = (np: Props) => {
       thumbnailImageComponent={props.thumbnailImageComponent} />
   });
 
-  const mainImage = props.images[state.currentImage];
-  const prevImage = state.currentImage > 0 ? props.images[state.currentImage - 1] : undefined;
-  const nextImage = state.currentImage < props.images.length - 1 ? props.images[state.currentImage + 1] : undefined
+  const mainImage = images[state.currentImage];
+  const prevImage = state.currentImage > 0 ? images[state.currentImage - 1] : undefined;
+  const nextImage = state.currentImage < images.length - 1 ? images[state.currentImage + 1] : undefined
 
   const lightbox = state.lightboxIsOpen ? (
     <Lightbox
@@ -217,7 +215,7 @@ export const Gallery: React.FC<Props> = (np: Props) => {
     <div id={props.id}
       className="ReactGridGallery"
       ref={ref}>
-      {images}
+      {galleryImages}
       {lightbox}
     </div>
   );
