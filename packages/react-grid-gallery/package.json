@@ -1,6 +1,6 @@
 {
   "name": "@codification/react-grid-gallery",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A typed React grid gallery.",
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "justified-layout": "4.1.0",
+    "react-image-and-background-image-fade": "1.0.8",
     "react-image-lightbox": "5.1.4",
-    "resize-observer-hook": "1.0.5",
-    "react-image-and-background-image-fade": "1.0.8"
+    "resize-observer-hook": "1.0.5"
   },
   "devDependencies": {
     "@types/justified-layout": "4.1.0",
