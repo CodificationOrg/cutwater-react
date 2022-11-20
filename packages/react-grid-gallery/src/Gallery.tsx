@@ -8,6 +8,7 @@ import { CalculatedImage, ClickHandler, Image, LightboxOptions, SimpleClickHandl
 
 interface OptionalProps {
   id?: string;
+  lazyLoad?: boolean;
   enableImageSelection?: boolean;
   rowHeight?: number;
   margin?: number;
@@ -47,6 +48,7 @@ const DEFUALT_PROPS: Required<OptionalProps> = {
   enableImageSelection: true,
   rowHeight: 180,
   margin: 2,
+  lazyLoad: true,
   enableLightbox: true
 }
 
@@ -57,7 +59,7 @@ interface GalleryState {
   containerWidth: number;
 }
 
-export const Gallery: React.FC<Props> = ({images, ...np}: Props) => {
+export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
   const props: Omit<Props, 'images'> & Required<OptionalProps> = { ...DEFUALT_PROPS, ...np };
   const lbProps: (LightboxOptions & RequiredLightboxOptions) = { ...DEFAULT_LIGHTBOX_OPTIONS, ...np.lightboxOptions };
 
@@ -181,6 +183,7 @@ export const Gallery: React.FC<Props> = ({images, ...np}: Props) => {
       item={item}
       index={i}
       margin={props.margin}
+      lazyLoad={props.lazyLoad}
       isSelectable={props.enableImageSelection}
       onClick={getOnClickThumbnailFn()}
       onSelectImage={onSelectImage}
