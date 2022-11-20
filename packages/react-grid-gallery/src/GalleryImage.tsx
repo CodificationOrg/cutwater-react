@@ -1,4 +1,6 @@
 import React, { CSSProperties, ElementType, ReactNode, useState } from 'react';
+import { Image } from 'react-image-and-background-image-fade';
+
 import { CheckButton } from './CheckButton';
 import { GalleryImageOverlay } from './GalleryImageOverlay';
 import { GalleryImageTag } from './GalleryImageTag';
@@ -8,6 +10,7 @@ interface Props {
   item: CalculatedImage;
   index: number;
   margin: number;
+  lazyLoad: boolean;
   isSelectable: boolean;
   onClick?: ClickHandler;
   onSelectImage: ClickHandler;
@@ -102,6 +105,8 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
     key: `img-${props.index}`,
     src: props.item.thumbnail,
     alt: alt,
+    height: `${props.item.thumbnailHeight}px`,
+    width: `${props.item.thumbnailWidth}px`,
     title: typeof props.item.caption === 'string' ? props.item.caption : undefined,
     style: thumbnailStyle(props),
   };
@@ -173,7 +178,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
           (e) => props.onClick!(props.index, e) : undefined}>
         {ThumbnailImageComponent ?
           <ThumbnailImageComponent {...props} imageProps={thumbnailProps} /> :
-          <img {...thumbnailProps} />}
+          <Image {...thumbnailProps} lazyLoad={props.lazyLoad} />}
       </div>
       {props.item.thumbnailCaption && (
         <div className="ReactGridGallery_tile-description"

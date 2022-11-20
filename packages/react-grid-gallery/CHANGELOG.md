@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.8 (2022-11-20)
+
+**Note:** Version bump only for package @codification/react-grid-gallery
+
+
+
+
+
+## 0.1.7 (2022-11-15)
+
+
+### Bug Fixes
+
+* ensure update on change to images ([7f8f47d](https://github.com/CodificationOrg/cutwater-react/commit/7f8f47d458fc69cb409825f403e557d861d08dd5))
+
+
+
+
+
 ## 0.1.6 (2022-11-09)
 
 
