@@ -177,6 +177,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
       </div>
       {props.item.thumbnailCaption && (
         <div className="ReactGridGallery_tile-description"
+          key={`tile-viewport-caption-${props.index}`}
           style={{
             background: "white",
             height: "100%",
