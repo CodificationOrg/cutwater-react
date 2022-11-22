@@ -1,0 +1,26 @@
+.img-loader-img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.img-loader-loading {
+  opacity: 0;
+}
+
+.img-loader-loaded {
+  animation: fadeInImg cubic-bezier(0.23, 1, 0.32, 1) 1;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInImg {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

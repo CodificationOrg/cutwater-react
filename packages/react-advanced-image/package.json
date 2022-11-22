@@ -1,0 +1,45 @@
+{
+  "name": "@codification/react-advanced-image",
+  "version": "0.1.8",
+  "description": "An advanced image component for React.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodificationOrg/cutwater-react.git",
+    "directory": "packages/react-advanced-image"
+  },
+  "author": {
+    "name": "William Weiss",
+    "url": "https://github.com/wweiss"
+  },
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "main": "dist/react-advanced-image.min.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "clean": "gulp clean",
+    "test": "gulp test --clean",
+    "build": "gulp --clean --fix --production",
+    "storybook": "start-storybook -s ./public -p 9001",
+    "build-storybook": "build-storybook"
+  },
+  "prettier": "@codification/cutwater-build-core/includes/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@codification/cutwater"
+    ]
+  },
+  "dependencies": {
+    "react-lazy-load": "4.0.1"
+  },
+  "devDependencies": {
+    "react": "17.0.2",
+    "style-loader": "2.0.0",
+    "webpack": "4.46.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2"
+  }
+}
