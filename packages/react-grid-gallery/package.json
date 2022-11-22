@@ -32,8 +32,8 @@
     ]
   },
   "dependencies": {
+    "@codification/react-advanced-image": "^0.1.8",
     "justified-layout": "4.1.0",
-    "react-image-and-background-image-fade": "1.0.8",
     "react-image-lightbox": "5.1.4",
     "resize-observer-hook": "1.0.5"
   },

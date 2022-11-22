@@ -1,5 +1,5 @@
+import { ImageLoader, LazyLoadImage } from '@codification/react-advanced-image';
 import React, { CSSProperties, ElementType, ReactNode, useState } from 'react';
-import { Image } from 'react-image-and-background-image-fade';
 
 import { CheckButton } from './CheckButton';
 import { GalleryImageOverlay } from './GalleryImageOverlay';
@@ -105,14 +105,13 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
     key: `img-${props.index}`,
     src: props.item.thumbnail,
     alt: alt,
-    height: `${props.item.thumbnailHeight}px`,
-    width: `${props.item.thumbnailWidth}px`,
+    height: props.item.scaledHeight,
+    width: props.item.scaledWidth,
     title: typeof props.item.caption === 'string' ? props.item.caption : undefined,
     style: thumbnailStyle(props),
   };
 
   const ThumbnailImageComponent = props.thumbnailImageComponent;
-
   return (
     <div className="ReactGridGallery_tile"
       key={`tile-${props.index}`}
@@ -134,7 +133,8 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
           opacity: 1,
           position: "absolute",
           height: "36px",
-          width: "100%"
+          width: "100%",
+          zIndex: 1
         }}>
         {renderCheckButton(props, hover)}
       </div>
@@ -149,7 +149,8 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
           maxHeight: "160px",
           width: "100%",
           bottom: "0px",
-          overflow: "hidden"
+          overflow: "hidden",
+          zIndex: 1
         }}>
         {tags}
       </div>
@@ -164,6 +165,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
           position: "absolute",
           height: "100%",
           width: "100%",
+          zIndex: 1,
           background: (hover
             && !props.item.isSelected
             && props.isSelectable) ?
@@ -177,8 +179,9 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
         onClick={props.onClick ?
           (e) => props.onClick!(props.index, e) : undefined}>
         {ThumbnailImageComponent ?
-          <ThumbnailImageComponent {...props} imageProps={thumbnailProps} /> :
-          <Image {...thumbnailProps} lazyLoad={props.lazyLoad} />}
+          <ThumbnailImageComponent {...props} imageProps={thumbnailProps} /> : props.lazyLoad ?
+            <LazyLoadImage {...thumbnailProps} />
+            : <ImageLoader {...thumbnailProps} />}
       </div>
       {props.item.thumbnailCaption && (
         <div className="ReactGridGallery_tile-description"
@@ -191,7 +194,8 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
             userSelect: "text",
             WebkitUserSelect: "text",
             MozUserSelect: "text",
-            overflow: "hidden"
+            overflow: "hidden",
+            zIndex: 1
           }}>
           {props.item.thumbnailCaption}
         </div>
