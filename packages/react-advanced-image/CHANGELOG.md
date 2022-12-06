@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.2 (2022-12-06)
+
+
+### Bug Fixes
+
+* improve reponsive design ([6720272](https://github.com/CodificationOrg/cutwater-react/commit/6720272ecccc26573dd976f43b5d9a638be4862a))
+
+
+
+
+
 ## 0.2.1 (2022-11-22)
 
 
