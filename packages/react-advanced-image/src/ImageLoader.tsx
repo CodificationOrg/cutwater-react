@@ -9,11 +9,23 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   loadingClassName?: string;
 }
 
-const imgStyle = (style?: CSSProperties, width = 0, height = 0, responsive = false): CSSProperties | undefined => responsive ? {
-  ...style,
-  maxWidth: `${width}px`,
-  aspectRatio: `${(width / height)}`
-} : style;
+const containerStyle = (width: number, height: number, responsive = false, style?: CSSProperties): CSSProperties => {
+  const base: CSSProperties = { background: 'grey', ...style };
+  if (responsive) {
+    return {
+      ...base,
+      aspectRatio: `${width / height}`,
+      maxWidth: `min(100%, ${width}px)`,
+      maxHeight: `min(100%, ${height}px)`,
+    }
+  }
+  return {
+    ...base,
+    width: `${width}px`,
+    height: `${height}px`,
+  }
+};
+
 
 export const ImageLoader: React.FC<Props> = ({ width, height, responsive = false, loadedClassName = 'img-loader-loaded', loadingClassName = 'img-loader-loading', ...props }: Props) => {
   const [loaded, setLoaded] = useState(false);
@@ -23,16 +35,8 @@ export const ImageLoader: React.FC<Props> = ({ width, height, responsive = false
   }
 
   const { className, ...imgProps } = props;
+  const imgClasses = `img-loader-img ${className ? className + ' ' : ''}${responsive ? 'img-loader-img-responsive ' : ''}${loaded ? loadedClassName : loadingClassName}`;
+  const imgElement = <img {...imgProps} className={imgClasses} onLoad={() => setLoaded(true)} />;
 
-  const imgClasses = `${className ? className + ' ' : ''}${responsive ? 'img-loader-img ' : ''}${loaded
-    ? loadedClassName
-    : loadingClassName}`;
-
-  return (
-    <img
-      {...imgProps}
-      style={imgStyle(props.style, width, height, responsive)}
-      className={imgClasses}
-      onLoad={() => setLoaded(true)} />
-  );
+  return (width && height) ? <div style={containerStyle(width, height, responsive, props.style,)}>{imgElement}</div> : imgElement;
 }

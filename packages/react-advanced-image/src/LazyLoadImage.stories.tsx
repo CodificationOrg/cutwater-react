@@ -1,8 +1,9 @@
 import { Story } from '@storybook/react/types-6-0';
 import React, { ComponentProps } from 'react';
+
+import { Dimensions } from './Dimensions';
 import { TEST_IMAGES } from './ImageLoader.stories';
 import { LazyLoadImage } from './LazyLoadImage';
-import { Dimensions } from './types';
 
 const defaultImg = TEST_IMAGES[0];
 const toDimensions = (imgDef: any): Dimensions => ({ width: imgDef.width, height: imgDef.height } as Dimensions);
@@ -27,7 +28,7 @@ Primary.storyName = 'LazyLoadImage';
 
 export const Many = () => {
   const imgLoaders = TEST_IMAGES.map((img, i) => (
-    <LazyLoadImage key={`img-${i}`} src={img.src} responsive {...toDimensions(defaultImg)} />
+    <LazyLoadImage key={`img-${i}`} src={img.src} responsive {...toDimensions(img)} />
   ))
-  return <div style={{ width: '450px' }}>{imgLoaders}</div>
+  return <div style={{ width: '450px', height: 'auto' }}>{imgLoaders}</div>
 };

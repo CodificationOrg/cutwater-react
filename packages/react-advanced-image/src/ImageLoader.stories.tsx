@@ -1,7 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 import React, { ComponentProps } from 'react';
+
 import { ImageLoader } from './ImageLoader';
-import { Dimensions } from './types';
+import { Dimensions } from './Dimensions';
 
 export const TEST_IMAGES = [
   {
@@ -93,7 +94,7 @@ Primary.storyName = 'ImageLoader';
 
 export const Many = () => {
   const imgLoaders = TEST_IMAGES.map((img, i) => (
-    <ImageLoader key={`img-${i}`} src={img.src} {...toDimensions(defaultImg)} responsive />
+    <ImageLoader key={`img-${i}`} src={img.src} {...toDimensions(img)} responsive />
   ))
   return <>{imgLoaders}</>
 };
@@ -101,6 +102,22 @@ export const Many = () => {
 export const Small = () => {
   return (
     <div style={{ width: '300px', height: '300px' }}>
+      <ImageLoader src={defaultImg.src} responsive {...toDimensions(defaultImg)} />
+    </div>
+  );
+};
+
+export const ConstrainedWide = () => {
+  return (
+    <div style={{ width: '50vh', height: '25vh' }}>
+      <ImageLoader src={defaultImg.src} responsive {...toDimensions(defaultImg)} />
+    </div>
+  );
+};
+
+export const ConstrainedTall = () => {
+  return (
+    <div style={{ width: '25vh', height: '50vh' }}>
       <ImageLoader src={defaultImg.src} responsive {...toDimensions(defaultImg)} />
     </div>
   );

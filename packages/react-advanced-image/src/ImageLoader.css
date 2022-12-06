@@ -1,6 +1,10 @@
-.img-loader-img {
+.img-loader-img { 
+  vertical-align: top;
+}
+
+.img-loader-img-responsive {
   width: 100%;
-  object-fit: contain;
+  height: 100%;
 }
 
 .img-loader-loading {
