@@ -26,13 +26,12 @@ const DEFAULT_PROPS: Partial<Props> = {
 }
 
 const thumbnailStyle = ({ thumbnailStyle, item }: Props): CSSProperties => {
-  if (thumbnailStyle) {
-    return thumbnailStyle();
-  }
+  const optional: CSSProperties = thumbnailStyle ? thumbnailStyle() : {};
   return {
     cursor: 'pointer',
     width: item.scaledWidth,
     height: item.scaledHeight,
+    ...optional,
   };
 }
 
