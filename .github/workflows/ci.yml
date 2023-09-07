@@ -14,11 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Configure Node
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
         cache: "yarn"
-        node-version: '14'
+        node-version: "18.16.0"
 
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
