@@ -5,8 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
-const package = require('./package.json');
-const buildConfig = require('@codification/cutwater-build-web').getConfig();
+const buildConfig = require('@codification/cutwater-build-web').buildEngine.getConfig();
 
 const webpackConfiguration = (env, options) => {
   return {
