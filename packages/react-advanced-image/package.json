@@ -1,6 +1,6 @@
 {
   "name": "@codification/react-advanced-image",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "An advanced image component for React.",
   "repository": {
     "type": "git",
@@ -35,9 +35,9 @@
     "react-lazy-load": "4.0.1"
   },
   "devDependencies": {
+    "css-loader": "6.8.1",
     "react": "18.2.0",
     "style-loader": "3.3.2",
-    "css-loader": "6.8.1",
     "webpack": "5.82.1"
   },
   "peerDependencies": {
