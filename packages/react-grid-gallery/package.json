@@ -39,11 +39,11 @@
   },
   "devDependencies": {
     "@types/justified-layout": "4.1.0",
-    "react": "17.0.2",
+    "react": "18.2.0",
     "style-loader": "2.0.0",
-    "webpack": "4.46.0"
+    "webpack": "5.82.1"
   },
   "peerDependencies": {
-    "react": ">=17.0.2"
+    "react": ">=18.2.0"
   }
 }
