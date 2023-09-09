@@ -36,7 +36,14 @@ export const ImageLoader: React.FC<Props> = ({ width, height, responsive = false
 
   const { className, ...imgProps } = props;
   const imgClasses = `img-loader-img ${className ? className + ' ' : ''}${responsive ? 'img-loader-img-responsive ' : ''}${loaded ? loadedClassName : loadingClassName}`;
-  const imgElement = <img {...imgProps} className={imgClasses} onLoad={() => setLoaded(true)} />;
+  const imgElement = (
+    <img
+      alt=""
+      {...imgProps}
+      className={imgClasses}
+      onLoad={() => setLoaded(true)}
+    />
+  );
 
   return (width && height) ? <div style={containerStyle(width, height, responsive, props.style,)}>{imgElement}</div> : imgElement;
 }

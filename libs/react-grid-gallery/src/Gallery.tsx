@@ -1,10 +1,16 @@
 import JustifiedLayout from 'justified-layout';
-import React, { ElementType, useEffect, useState } from 'react';
+import React, { ElementType, useEffect, useMemo, useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import useResizeObserver from 'resize-observer-hook';
 import { GalleryImage } from './GalleryImage';
-import { CalculatedImage, ClickHandler, Image, LightboxOptions, SimpleClickHandler } from './types';
+import {
+  CalculatedImage,
+  ClickHandler,
+  Image,
+  LightboxOptions,
+  SimpleClickHandler,
+} from './types';
 
 interface OptionalProps {
   id?: string;
@@ -40,17 +46,17 @@ const DEFAULT_LIGHTBOX_OPTIONS: RequiredLightboxOptions = {
   currentImage: 0,
   isOpen: false,
   showImageCount: true,
-  imageCountSeparator: 'of'
-}
+  imageCountSeparator: 'of',
+};
 
 const DEFUALT_PROPS: Required<OptionalProps> = {
-  id: "ReactGridGallery",
+  id: 'ReactGridGallery',
   enableImageSelection: true,
   rowHeight: 180,
   margin: 2,
   lazyLoad: true,
-  enableLightbox: true
-}
+  enableLightbox: true,
+};
 
 interface GalleryState {
   thumbnails: CalculatedImage[];
@@ -60,26 +66,64 @@ interface GalleryState {
 }
 
 export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
-  const props: Omit<Props, 'images'> & Required<OptionalProps> = { ...DEFUALT_PROPS, ...np };
-  const lbProps: (LightboxOptions & RequiredLightboxOptions) = { ...DEFAULT_LIGHTBOX_OPTIONS, ...np.lightboxOptions };
+  const props: Omit<Props, 'images'> & Required<OptionalProps> = useMemo(
+    () => ({
+      ...DEFUALT_PROPS,
+      ...np,
+    }),
+    [np]
+  );
+  const lbProps: LightboxOptions & RequiredLightboxOptions = useMemo(
+    () => ({
+      ...DEFAULT_LIGHTBOX_OPTIONS,
+      ...np.lightboxOptions,
+    }),
+    [np]
+  );
 
   const [ref, width] = useResizeObserver();
   const [state, setState] = useState<GalleryState>({
     thumbnails: [],
     lightboxIsOpen: lbProps.isOpen,
     currentImage: lbProps.currentImage,
-    containerWidth: 0
+    containerWidth: 0,
   });
 
   useEffect(() => {
+    const renderThumbs = (containerWidth: number): CalculatedImage[] => {
+      if (!images) return [];
+      if (containerWidth === 0) return [];
+
+      const items = images.slice() as CalculatedImage[];
+      const ratios = items.map(
+        (item) => item.thumbnailWidth / item.thumbnailHeight
+      );
+      const layoutConfig = {
+        containerWidth,
+        boxSpacing: props.margin,
+        targetRowHeight: props.rowHeight,
+        maxNumRows: props.maxRows,
+      };
+
+      const result = JustifiedLayout(ratios, layoutConfig);
+
+      result.boxes.forEach((box, i) => {
+        const item = items[i];
+        item.scaledWidth = Math.round(box.width);
+        item.scaledHeight = Math.round(box.height);
+      });
+
+      return items;
+    };
+
     if (width) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         containerWidth: Math.floor(width),
-        thumbnails: renderThumbs(width)
+        thumbnails: renderThumbs(width),
       }));
     }
-  }, [width, images]);
+  }, [width, images, props]);
 
   const openLightbox = (
     index?: number,
@@ -96,7 +140,7 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
     }
     setState((prev) => ({
       ...prev,
-      currentImage: index!,
+      currentImage: index || lbProps.currentImage,
       lightboxIsOpen: true,
     }));
   };
@@ -147,62 +191,47 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
     index?: number,
     event?: React.MouseEvent<HTMLElement>
   ): void => {
-    event!.preventDefault();
+    event && event.preventDefault();
     if (props.onSelectImage) {
-      props.onSelectImage.call(this, index, images[index!]);
+      props.onSelectImage.call(this, index, index ? images[index] : undefined);
     }
   };
 
   const renderImageTitle = (): string | undefined => {
     if (lbProps.showImageCount) {
-      return `${state.currentImage + 1} ${lbProps.imageCountSeparator} ${images.length}`;
+      return `${state.currentImage + 1} ${lbProps.imageCountSeparator} ${
+        images.length
+      }`;
     }
     return undefined;
-  }
-
-  const renderThumbs = (containerWidth: number): CalculatedImage[] => {
-    if (!images) return [];
-    if (containerWidth == 0) return [];
-
-    const items = images.slice() as CalculatedImage[];
-    const ratios = items.map(item => item.thumbnailWidth / item.thumbnailHeight);
-    const layoutConfig = {
-      containerWidth,
-      boxSpacing: props.margin,
-      targetRowHeight: props.rowHeight,
-      maxNumRows: props.maxRows
-    }
-
-    const result = JustifiedLayout(ratios, layoutConfig);
-
-    result.boxes.forEach((box, i) => {
-      const item = items[i];
-      item.scaledWidth = Math.round(box.width);
-      item.scaledHeight = Math.round(box.height);
-    });
-
-    return items;
-  }
+  };
 
   const galleryImages = state.thumbnails.map((item, i) => {
-    return <GalleryImage
-      key={`Image-${i}-${item.src}`}
-      item={item}
-      index={i}
-      margin={props.margin}
-      lazyLoad={props.lazyLoad}
-      isSelectable={props.enableImageSelection}
-      onClick={getOnClickThumbnailFn()}
-      onSelectImage={onSelectImage}
-      tagStyle={props.tagStyle}
-      tileViewportStyle={props.tileViewportStyle}
-      thumbnailStyle={props.thumbnailStyle}
-      thumbnailImageComponent={props.thumbnailImageComponent} />
+    return (
+      <GalleryImage
+        key={`Image-${i}-${item.src}`}
+        item={item}
+        index={i}
+        margin={props.margin}
+        lazyLoad={props.lazyLoad}
+        isSelectable={props.enableImageSelection}
+        onClick={getOnClickThumbnailFn()}
+        onSelectImage={onSelectImage}
+        tagStyle={props.tagStyle}
+        tileViewportStyle={props.tileViewportStyle}
+        thumbnailStyle={props.thumbnailStyle}
+        thumbnailImageComponent={props.thumbnailImageComponent}
+      />
+    );
   });
 
   const mainImage = images[state.currentImage];
-  const prevImage = state.currentImage > 0 ? images[state.currentImage - 1] : undefined;
-  const nextImage = state.currentImage < images.length - 1 ? images[state.currentImage + 1] : undefined
+  const prevImage =
+    state.currentImage > 0 ? images[state.currentImage - 1] : undefined;
+  const nextImage =
+    state.currentImage < images.length - 1
+      ? images[state.currentImage + 1]
+      : undefined;
 
   const lightbox = state.lightboxIsOpen ? (
     <Lightbox
@@ -222,9 +251,7 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
   ) : null;
 
   return (
-    <div id={props.id}
-      className="ReactGridGallery"
-      ref={ref}>
+    <div id={props.id} className="ReactGridGallery" ref={ref}>
       {galleryImages}
       {lightbox}
     </div>
