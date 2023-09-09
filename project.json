@@ -7,7 +7,7 @@
       "options": {
         "syncVersions": true,
         "preset": "angular",
-        "postTargets": ["workspace:deploy", "workspace:github"]
+        "postTargets": ["workspace:github"]
       }
     },
     "github": {
