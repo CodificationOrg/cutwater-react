@@ -28,8 +28,8 @@ jobs:
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
 
-    - run: git branch --track main origin/main
-    
+    - run: git branch --track main origin/master
+
     - run: npx nx format:check
     - run: npx nx affected -t lint --parallel=3
     - run: npx nx affected -t test --parallel=3
