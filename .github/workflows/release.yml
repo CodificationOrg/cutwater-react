@@ -47,3 +47,5 @@ jobs:
 
       - name: Publish
         run: npx nx affected -t deploy --parallel=3
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
