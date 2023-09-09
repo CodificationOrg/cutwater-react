@@ -72,30 +72,6 @@
       "options": {
         "command": "test-storybook -c libs/react-advanced-image/.storybook --url=http://localhost:4400"
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "angular",
-        "postTargets": [
-          "react-advanced-image:deploy",
-          "react-advanced-image:github"
-        ]
-      }
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "${tag}",
-        "notes": "${notes}"
-      }
-    },
-    "deploy": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public",
-        "buildTarget": "production"
-      }
     }
   }
 }
