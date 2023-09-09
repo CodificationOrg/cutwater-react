@@ -18,6 +18,8 @@ jobs:
       with:
         fetch-depth: 0
     - uses: nrwl/nx-set-shas@v3
+      with:
+        main-branch-name: 'master'
     
     - name: Use Node.js 18
       uses: actions/setup-node@v3
