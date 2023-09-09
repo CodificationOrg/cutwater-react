@@ -44,3 +44,6 @@ jobs:
         run: npx nx affected -t version --syncVersions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        run: npx nx affected -t deploy --parallel=3
