@@ -10,9 +10,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NX_BRANCH: ${{ github.ref_name }}
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: 'master'
 
       - name: Configure Git User
         run: |
@@ -29,19 +36,11 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       
-      - name: Build
-        run:  yarn build
-        env:
-          NX_BRANCH: ${{ github.ref_name }}
+      - run: npx nx affected -t lint --parallel=3
+      - run: npx nx affected -t test --parallel=3
+      - run: npx nx affected -t build --parallel=3
 
       - name: Release
-        run: npx lerna version --conventional-commits --create-release github --yes
+        run: npx nx affected --base=last-release --target=version
         env:
-          NX_BRANCH: ${{ github.ref_name }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish
-        run:  npx lerna publish from-package --yes --no-verify-access
-        env:
-          NX_BRANCH: ${{ github.ref_name }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
