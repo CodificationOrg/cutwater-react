@@ -1,7 +1,20 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.2.5](https://github.com/CodificationOrg/cutwater-react/compare/v0.2.4...v0.2.5) (2023-09-09)
+
+
+### Bug Fixes
+
+* another branch name fix ([50ae47d](https://github.com/CodificationOrg/cutwater-react/commit/50ae47d6d6938db2eb40ed4b65626910279f9fd7))
+* correct linting issues ([5aa4a1d](https://github.com/CodificationOrg/cutwater-react/commit/5aa4a1d7231ca5f18be1687d42c4c40038bbccc5))
+* correct main to master ([749eeaa](https://github.com/CodificationOrg/cutwater-react/commit/749eeaaa98c5dee6684b39f580e096afbeb3e568))
+* extra files for prettier to skip ([eb76558](https://github.com/CodificationOrg/cutwater-react/commit/eb765588af7e5e376a8e3b85fab2e20adb283526))
+* removing format check for now ([ab759c2](https://github.com/CodificationOrg/cutwater-react/commit/ab759c238ab0b2ea597776e274b85e32eed9434a))
+* setting branch name for nx sha ([b309700](https://github.com/CodificationOrg/cutwater-react/commit/b3097005f9c6ed822cdf2b23ae5535f48040f134))
+
+
 
 ## 0.2.4 (2023-09-08)
 

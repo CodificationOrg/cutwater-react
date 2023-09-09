@@ -1,7 +1,15 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.2.5](https://github.com/CodificationOrg/cutwater-react/compare/v0.2.4...v0.2.5) (2023-09-09)
+
+
+### Bug Fixes
+
+* correct linting issues ([5aa4a1d](https://github.com/CodificationOrg/cutwater-react/commit/5aa4a1d7231ca5f18be1687d42c4c40038bbccc5))
+
+
 
 ## 0.2.4 (2023-09-08)
 
