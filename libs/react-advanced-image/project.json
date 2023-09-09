@@ -72,6 +72,13 @@
       "options": {
         "command": "test-storybook -c libs/react-advanced-image/.storybook --url=http://localhost:4400"
       }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public",
+        "buildTarget": "production"
+      }
     }
   }
 }
