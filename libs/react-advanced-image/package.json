@@ -1,0 +1,23 @@
+{
+  "name": "@codification/react-advanced-image",
+  "version": "0.2.4",
+  "description": "An advanced image component for React.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodificationOrg/cutwater-react.git",
+    "directory": "libs/react-advanced-image"
+  },
+  "author": {
+    "name": "William Weiss",
+    "url": "https://github.com/wweiss"
+  },
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
+}
