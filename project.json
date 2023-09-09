@@ -7,6 +7,8 @@
       "options": {
         "syncVersions": true,
         "preset": "angular",
+        "push": true,
+        "baseBranch": "master",
         "postTargets": ["workspace:github"]
       }
     },
@@ -14,10 +16,7 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "${tag}",
-        "notes": "${notes}",
-        "push": true,
-        "baseBranch": "master",
-        "syncVersions": true
+        "notes": "${notes}"
       }
     }
   }
