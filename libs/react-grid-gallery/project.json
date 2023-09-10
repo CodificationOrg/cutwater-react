@@ -84,6 +84,12 @@
           "buildTarget": "react-grid-gallery:build-storybook:ci"
         }
       }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
     }
   }
 }

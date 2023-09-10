@@ -9,7 +9,12 @@
         "preset": "angular",
         "push": true,
         "baseBranch": "master",
-        "postTargets": ["workspace:github", "workspace:deploy"]
+        "postTargets": [
+          "workspace:github",
+          "react-advanced-image:deploy",
+          "react-element-size-hook:deploy",
+          "react-grid-gallery:deploy"
+        ]
       }
     },
     "github": {
@@ -17,13 +22,6 @@
       "options": {
         "tag": "${tag}",
         "notes": "${notes}"
-      }
-    },
-    "deploy": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public",
-        "noBuild": true
       }
     }
   }
