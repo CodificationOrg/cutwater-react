@@ -1,6 +1,6 @@
 {
   "name": "@codification/react-element-size-hook",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "A hook for reacting to element size changes.",
   "repository": {
     "type": "git",
