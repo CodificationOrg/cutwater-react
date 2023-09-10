@@ -9,7 +9,7 @@
         "preset": "angular",
         "push": true,
         "baseBranch": "master",
-        "postTargets": ["workspace:github"]
+        "postTargets": ["workspace:github", "workspace:deploy"]
       }
     },
     "github": {
@@ -17,6 +17,12 @@
       "options": {
         "tag": "${tag}",
         "notes": "${notes}"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   }

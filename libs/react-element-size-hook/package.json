@@ -1,0 +1,29 @@
+{
+  "name": "@codification/react-element-size-hook",
+  "version": "0.2.6",
+  "description": "A hook for reacting to element size changes.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodificationOrg/cutwater-react.git",
+    "directory": "libs/react-element-size-hook"
+  },
+  "author": {
+    "name": "William Weiss",
+    "url": "https://github.com/wweiss"
+  },
+  "contributors": [
+    {
+      "name": "Makar Murashov",
+      "url": "https://dev.to/murashow/how-to-use-resize-observer-with-react-5ff5"
+    }
+  ],
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
+}

@@ -18,8 +18,14 @@
       "@codification/react-advanced-image": [
         "libs/react-advanced-image/src/index.ts"
       ],
+      "@codification/react-element-size-hook": [
+        "libs/react-element-size-hook/src/index.ts"
+      ],
       "@codification/react-grid-gallery": [
         "libs/react-grid-gallery/src/index.ts"
+      ],
+      "@codification/react-resize-observer-hook": [
+        "libs/react-resize-observer-hook/src/index.ts"
       ]
     }
   },
