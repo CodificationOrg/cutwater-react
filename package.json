@@ -7,12 +7,12 @@
   },
   "private": true,
   "dependencies": {
+    "@react-hook/resize-observer": "1.2.6",
     "justified-layout": "4.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-image-lightbox": "5.1.4",
     "react-lazy-load": "4.0.1",
-    "resize-observer-hook": "1.0.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-angular": "^17.0.0",
     "@jscutlery/semver": "^3.1.0",
+    "@nx/devkit": "^16.8.1",
     "@nx/eslint-plugin": "16.8.1",
     "@nx/jest": "16.8.1",
     "@nx/js": "16.8.1",

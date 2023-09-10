@@ -2290,7 +2290,7 @@
     semver "7.5.3"
     tslib "^2.3.0"
 
-"@nx/devkit@16.8.1":
+"@nx/devkit@16.8.1", "@nx/devkit@^16.8.1":
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/@nx/devkit/-/devkit-16.8.1.tgz#830a6f3daf774aabe1a95e257eb4c832ee85d497"
   integrity sha512-I+Cg+lXk0wRz6KC9FZbWFuJWQTXAt5O3bNl9ksISmzqmEyuy72Cv+/MBHvF7o54Sq80DNw+RKWB1re5HFOsqCA==
@@ -2820,6 +2820,25 @@
   integrity sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
+
+"@react-hook/latest@^1.0.2":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@react-hook/latest/-/latest-1.0.3.tgz#c2d1d0b0af8b69ec6e2b3a2412ba0768ac82db80"
+  integrity sha512-dy6duzl+JnAZcDbNTfmaP3xHiKtbXYOaz3G51MGVljh548Y8MWzTr+PHLOfvpypEVW9zwvl+VyKjbWKEVbV1Rg==
+
+"@react-hook/passive-layout-effect@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@react-hook/passive-layout-effect/-/passive-layout-effect-1.2.1.tgz#c06dac2d011f36d61259aa1c6df4f0d5e28bc55e"
+  integrity sha512-IwEphTD75liO8g+6taS+4oqz+nnroocNfWVHWz7j+N+ZO2vYrc6PV1q7GQhuahL0IOR7JccFTsFKQ/mb6iZWAg==
+
+"@react-hook/resize-observer@1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@react-hook/resize-observer/-/resize-observer-1.2.6.tgz#9a8cf4c5abb09becd60d1d65f6bf10eec211e291"
+  integrity sha512-DlBXtLSW0DqYYTW3Ft1/GQFZlTdKY5VAFIC4+km6IK5NiPPDFchGbEJm1j6pSgMqPRHbUQgHJX7RaR76ic1LWA==
+  dependencies:
+    "@juggle/resize-observer" "^3.3.1"
+    "@react-hook/latest" "^1.0.2"
+    "@react-hook/passive-layout-effect" "^1.2.0"
 
 "@rollup/pluginutils@^5.0.2":
   version "5.0.4"
@@ -11438,11 +11457,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
-
-resize-observer-hook@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/resize-observer-hook/-/resize-observer-hook-1.0.5.tgz#f446e1803a4ec5e8a46d86fb8b048e00f72a4ad5"
-  integrity sha512-xYLTcDDoHGXJ8ub1pjDqZ0aWQ8GOiWgREeGA0aTzIl4xDtXUX7goQ5uzGdhu/OXVorYVliz3i5ua+x1eTFFqLA==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
