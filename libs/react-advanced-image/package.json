@@ -16,14 +16,8 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": [
-        "./index.mjs",
-        "./style.css"
-      ],
-      "require": [
-        "./index.js",
-        "./style.css"
-      ]
+      "import": "./index.mjs",
+      "require": "./index.js"
     }
   }
 }
