@@ -96,7 +96,7 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
       (item) => item.thumbnailWidth / item.thumbnailHeight
     );
     const layoutConfig = {
-      width,
+      containerWidth: width,
       boxSpacing: props.margin,
       targetRowHeight: props.rowHeight,
       maxNumRows: props.maxRows,
