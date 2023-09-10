@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.4](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.3...v0.3.4) (2023-09-10)
+
+
+### Bug Fixes
+
+* inject css into grid artifact ([819d214](https://github.com/CodificationOrg/cutwater-react/commit/819d2148f8c70e7a4d3137f2f18489c183330ad7))
+
+
+
 ## [0.3.3](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.2...v0.3.3) (2023-09-10)
 
 

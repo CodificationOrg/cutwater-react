@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.4](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.3...v0.3.4) (2023-09-10)
+
+
+### Bug Fixes
+
+* inject css for advanced images ([fe7ab8b](https://github.com/CodificationOrg/cutwater-react/commit/fe7ab8b2c530270fd504e3dc2404f3e6ed3daaf9))
+
+
+
 ## [0.3.3](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.2...v0.3.3) (2023-09-10)
 
 
