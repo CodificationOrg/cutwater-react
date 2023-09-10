@@ -1,4 +1,5 @@
 import React, { CSSProperties, useState } from "react";
+
 import './ImageLoader.css';
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
