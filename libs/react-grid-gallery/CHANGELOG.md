@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.3](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.2...v0.3.3) (2023-09-10)
+
+
+### Bug Fixes
+
+* correct grid justification ([a9da413](https://github.com/CodificationOrg/cutwater-react/commit/a9da4136cfcd10a6730514b38342669f3692362e))
+
+
+
 ## [0.3.2](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.1...v0.3.2) (2023-09-10)
 
 

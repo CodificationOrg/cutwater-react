@@ -1,6 +1,6 @@
 {
   "name": "@codification/react-advanced-image",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "An advanced image component for React.",
   "repository": {
     "type": "git",
@@ -16,8 +16,14 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": [
+        "./index.mjs",
+        "./style.css"
+      ],
+      "require": [
+        "./index.js",
+        "./style.css"
+      ]
     }
   }
 }
