@@ -1,8 +1,8 @@
+import { useElementSize } from '@codification/react-element-size-hook';
 import JustifiedLayout from 'justified-layout';
 import React, { ElementType, useEffect, useMemo, useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import useResizeObserver from 'resize-observer-hook';
 import { GalleryImage } from './GalleryImage';
 import {
   CalculatedImage,
@@ -59,7 +59,6 @@ const DEFUALT_PROPS: Required<OptionalProps> = {
 };
 
 interface GalleryState {
-  thumbnails: CalculatedImage[];
   lightboxIsOpen: boolean;
   currentImage: number;
   containerWidth: number;
@@ -81,49 +80,46 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
     [np]
   );
 
-  const [ref, width] = useResizeObserver();
+  const [ref, { width }] = useElementSize();
   const [state, setState] = useState<GalleryState>({
-    thumbnails: [],
     lightboxIsOpen: lbProps.isOpen,
     currentImage: lbProps.currentImage,
     containerWidth: 0,
   });
 
-  useEffect(() => {
-    const renderThumbs = (containerWidth: number): CalculatedImage[] => {
-      if (!images) return [];
-      if (containerWidth === 0) return [];
+  const thumbnails: CalculatedImage[] = useMemo(() => {
+    if (!images) return [];
+    if (!width || width < 1) return [];
 
-      const items = images.slice() as CalculatedImage[];
-      const ratios = items.map(
-        (item) => item.thumbnailWidth / item.thumbnailHeight
-      );
-      const layoutConfig = {
-        containerWidth,
-        boxSpacing: props.margin,
-        targetRowHeight: props.rowHeight,
-        maxNumRows: props.maxRows,
-      };
-
-      const result = JustifiedLayout(ratios, layoutConfig);
-
-      result.boxes.forEach((box, i) => {
-        const item = items[i];
-        item.scaledWidth = Math.round(box.width);
-        item.scaledHeight = Math.round(box.height);
-      });
-
-      return items;
+    const items = images.slice() as CalculatedImage[];
+    const ratios = items.map(
+      (item) => item.thumbnailWidth / item.thumbnailHeight
+    );
+    const layoutConfig = {
+      width,
+      boxSpacing: props.margin,
+      targetRowHeight: props.rowHeight,
+      maxNumRows: props.maxRows,
     };
+    const result = JustifiedLayout(ratios, layoutConfig);
 
+    result.boxes.forEach((box, i) => {
+      const item = items[i];
+      item.scaledWidth = Math.round(box.width);
+      item.scaledHeight = Math.round(box.height);
+    });
+
+    return items;
+  }, [width, images, props]);
+
+  useEffect(() => {
     if (width) {
       setState((prev) => ({
         ...prev,
         containerWidth: Math.floor(width),
-        thumbnails: renderThumbs(width),
       }));
     }
-  }, [width, images, props]);
+  }, [width]);
 
   const openLightbox = (
     index?: number,
@@ -206,7 +202,7 @@ export const Gallery: React.FC<Props> = ({ images, ...np }: Props) => {
     return undefined;
   };
 
-  const galleryImages = state.thumbnails.map((item, i) => {
+  const galleryImages = thumbnails.map((item, i) => {
     return (
       <GalleryImage
         key={`Image-${i}-${item.src}`}
