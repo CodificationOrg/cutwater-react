@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.3](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.2...v0.3.3) (2023-09-10)
+
+
+### Bug Fixes
+
+* potential fix for missing css ([1ed298b](https://github.com/CodificationOrg/cutwater-react/commit/1ed298ba968bc57b0a054d50327989d65c072077))
+
+
+
 ## [0.3.2](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.1...v0.3.2) (2023-09-10)
 
 
