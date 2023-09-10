@@ -3,6 +3,7 @@ import JustifiedLayout from 'justified-layout';
 import React, { ElementType, useEffect, useMemo, useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+
 import { GalleryImage } from './GalleryImage';
 import {
   CalculatedImage,

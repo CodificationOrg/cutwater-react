@@ -1,5 +1,6 @@
 import * as CSS from 'csstype';
 import React, { useState } from 'react';
+
 import { ClickHandler } from './types';
 
 interface Props {
