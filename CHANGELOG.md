@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.2](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.1...v0.3.2) (2023-09-10)
+
+
+
 ## [0.3.1](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.0...v0.3.1) (2023-09-10)
 
 
