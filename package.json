@@ -9,9 +9,9 @@
   "dependencies": {
     "@react-hook/resize-observer": "1.2.6",
     "justified-layout": "4.1.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-image-lightbox": "5.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-image-lightbox": "^5.1.4",
     "react-lazy-load": "4.0.1",
     "tslib": "^2.3.0"
   },
@@ -41,8 +41,8 @@
     "@types/jest": "^29.4.0",
     "@types/justified-layout": "4.1.0",
     "@types/node": "18.14.2",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.6",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "~4.0.0",
