@@ -1,2 +1,2 @@
-export type { Image, LightboxOptions, Tag } from './types';
 export * from './Gallery';
+export type { Image, Tag } from './types';
