@@ -9,9 +9,9 @@
   "dependencies": {
     "@react-hook/resize-observer": "1.2.6",
     "justified-layout": "4.1.0",
+    "photoswipe": "^5.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-image-lightbox": "^5.1.4",
     "react-lazy-load": "4.0.1",
     "tslib": "^2.3.0"
   },

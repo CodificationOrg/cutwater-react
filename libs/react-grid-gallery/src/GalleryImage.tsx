@@ -1,4 +1,8 @@
-import { ImageLoader, LazyLoadImage } from '@codification/react-advanced-image';
+import {
+  ImageLoader,
+  LazyLoadImage,
+  LightboxLink,
+} from '@codification/react-advanced-image';
 import React, { CSSProperties, ElementType, ReactNode, useState } from 'react';
 
 import { CheckButton } from './CheckButton';
@@ -18,6 +22,7 @@ interface Props {
   thumbnailStyle?: () => CSSProperties;
   tagStyle?: CSSProperties;
   customOverlay?: ReactNode;
+  lightboxEnabled?: boolean;
   thumbnailImageComponent?: ElementType;
 }
 
@@ -145,6 +150,35 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
   };
 
   const ThumbnailImageComponent = props.thumbnailImageComponent;
+  const tileViewport = (
+    <div
+      className="ReactGridGallery_tile-viewport"
+      style={tileViewportStyle(props)}
+      key={`tile-viewport-${props.index}`}
+      onClick={(e) => props.onClick && props.onClick(props.index, e)}
+    >
+      {ThumbnailImageComponent ? (
+        <ThumbnailImageComponent {...props} imageProps={thumbnailProps} />
+      ) : props.lazyLoad ? (
+        <LazyLoadImage {...thumbnailProps} />
+      ) : (
+        <ImageLoader {...thumbnailProps} />
+      )}
+    </div>
+  );
+
+  const wrappedTileViewport = props.lightboxEnabled ? (
+    <LightboxLink
+      src={props.item.src}
+      width={props.item.width}
+      height={props.item.height}
+    >
+      {tileViewport}
+    </LightboxLink>
+  ) : (
+    tileViewport
+  );
+
   return (
     <div
       className="ReactGridGallery_tile"
@@ -211,21 +245,7 @@ export const GalleryImage: React.FC<Props> = (np: Props) => {
               : 'none',
         }}
       ></div>
-
-      <div
-        className="ReactGridGallery_tile-viewport"
-        style={tileViewportStyle(props)}
-        key={`tile-viewport-${props.index}`}
-        onClick={(e) => props.onClick && props.onClick(props.index, e)}
-      >
-        {ThumbnailImageComponent ? (
-          <ThumbnailImageComponent {...props} imageProps={thumbnailProps} />
-        ) : props.lazyLoad ? (
-          <LazyLoadImage {...thumbnailProps} />
-        ) : (
-          <ImageLoader {...thumbnailProps} />
-        )}
-      </div>
+      {wrappedTileViewport}
       {props.item.thumbnailCaption && (
         <div
           className="ReactGridGallery_tile-description"
