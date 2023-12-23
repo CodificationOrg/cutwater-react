@@ -1,5 +1,6 @@
 import useResizeObserver from '@react-hook/resize-observer';
-import { MutableRefObject, useLayoutEffect, useRef, useState } from 'react';
+import { MutableRefObject, useRef, useState } from 'react';
+import { useLayoutEffect } from './IsomorphicLayout';
 
 interface Size {
   width: number;
