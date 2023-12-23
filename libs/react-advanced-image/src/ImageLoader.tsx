@@ -11,7 +11,10 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const containerStyle = (width: number, height: number, responsive = false, style?: CSSProperties): CSSProperties => {
-  const base: CSSProperties = { background: 'grey', ...style };
+  const base: CSSProperties = {
+    backgroundColor: 'rgba(25, 25, 25, 0.2)',
+    ...style,
+  };
   if (responsive) {
     return {
       ...base,
