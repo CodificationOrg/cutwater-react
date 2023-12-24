@@ -9,12 +9,7 @@
         "preset": "angular",
         "push": true,
         "baseBranch": "master",
-        "postTargets": [
-          "workspace:github",
-          "react-advanced-image:deploy",
-          "react-element-size-hook:deploy",
-          "react-grid-gallery:deploy"
-        ]
+        "postTargets": ["workspace:github"]
       }
     },
     "github": {
