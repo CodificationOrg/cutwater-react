@@ -2,6 +2,22 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.6-alpha.0](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.5...v0.3.6-alpha.0) (2023-12-24)
+
+
+### Bug Fixes
+
+* remove outdated export ([edfff48](https://github.com/CodificationOrg/cutwater-react/commit/edfff48e102dde918cbc08d26f4790b684e194d4))
+
+
+### Features
+
+* enable isomorphic layout effect for ssr ([5d646cb](https://github.com/CodificationOrg/cutwater-react/commit/5d646cb6868b10e0500b5ba51a2dae242f26f088))
+* improve default loader placeholder ([69a8148](https://github.com/CodificationOrg/cutwater-react/commit/69a81481e7dd904fd2cd749e3c64c77293a67952))
+* upgrade lightbox support ([732e942](https://github.com/CodificationOrg/cutwater-react/commit/732e942f8e062f9a5bbd05654a191d569801604d))
+
+
+
 ## [0.3.5](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.4...v0.3.5) (2023-12-22)
 
 

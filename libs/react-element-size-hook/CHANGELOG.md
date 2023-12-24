@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.6-alpha.0](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.5...v0.3.6-alpha.0) (2023-12-24)
+
+
+### Features
+
+* enable isomorphic layout effect for ssr ([5d646cb](https://github.com/CodificationOrg/cutwater-react/commit/5d646cb6868b10e0500b5ba51a2dae242f26f088))
+
+
+
 ## [0.3.5](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.4...v0.3.5) (2023-12-22)
 
 
