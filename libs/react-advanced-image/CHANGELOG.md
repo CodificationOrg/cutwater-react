@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.6-alpha.0](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.5...v0.3.6-alpha.0) (2023-12-24)
+
+
+### Features
+
+* improve default loader placeholder ([69a8148](https://github.com/CodificationOrg/cutwater-react/commit/69a81481e7dd904fd2cd749e3c64c77293a67952))
+* upgrade lightbox support ([732e942](https://github.com/CodificationOrg/cutwater-react/commit/732e942f8e062f9a5bbd05654a191d569801604d))
+
+
+
 ## [0.3.5](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.4...v0.3.5) (2023-12-22)
 
 
