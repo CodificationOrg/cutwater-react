@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.6-alpha.2](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.6-alpha.1...v0.3.6-alpha.2) (2023-12-24)
+
+
+### Bug Fixes
+
+* possible window check fix ([9d98c75](https://github.com/CodificationOrg/cutwater-react/commit/9d98c7554efb98dc9f3338960578131078d4fd60))
+
+
+
 ## [0.3.6-alpha.1](https://github.com/CodificationOrg/cutwater-react/compare/v0.3.6-alpha.0...v0.3.6-alpha.1) (2023-12-24)
 
 
